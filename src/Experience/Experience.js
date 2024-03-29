@@ -1,13 +1,16 @@
 import * as THREE from 'three'
 
 import Debug from './Utils/Debug.js'
+import Resources from './Utils/Resources.js'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
-import Camera from './Camera.js'
-import Renderer from './Renderer.js'
-import World from './World/World.js'
-import Resources from './Utils/Resources.js'
 
+import World from './World/World.js'
+
+import Camera from './Camera.js'
+import Mouse from './Mouse.js'
+import Raycaster from './Raycaster.js'
+import Renderer from './Renderer.js'
 import sources from './sources.js'
 
 let instance = null
@@ -34,7 +37,9 @@ export default class Experience
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
+        this.raycaster = new Raycaster()
         this.resources = new Resources(sources)
+        this.mouse = new Mouse()
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
@@ -60,8 +65,8 @@ export default class Experience
 
     update()
     {
+        this.raycaster.update()
         this.camera.update()
-        // this.world.update()
         this.renderer.update()
     }
 
