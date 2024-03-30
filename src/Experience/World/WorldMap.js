@@ -10,6 +10,7 @@ export default class WorldMap
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
+        this.raycaster = this.experience.raycaster
 
         // Debug
         if(this.debug.active)
@@ -28,7 +29,6 @@ export default class WorldMap
         this.model = this.resource.scene
         this.model.scale.set(-0.1, 0.1, -0.1)
         this.model.position.set(0, 0, 0.5)
-        this.scene.add(this.model)
 
         this.model.traverse((child) =>
         {
@@ -37,6 +37,10 @@ export default class WorldMap
                 this.assignRandomColors(child)
             }
         })
+        
+        this.scene.add(this.model)
+
+        this.raycaster.model = this.model
     }
 
     assignRandomColors(_child)
