@@ -8,13 +8,13 @@ export default class Raycaster
         this.experience = new Experience()
         this.mouse = this.experience.mouse
         this.camera = this.experience.camera
+        this.model = null;
 
         this.setInstance()
 
         // Initialize variables for tracking intersected mesh and original material
         this.lastIntersectedMesh = null;
         this.originalMaterial = null;
-        this.model = null;
     }
 
     setInstance()
